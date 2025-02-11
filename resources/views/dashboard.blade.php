@@ -1,11 +1,12 @@
 @extends('admin.layouts.app')
 @section('title', '| Login')
-
 @push('css')
 @endpush
 
 @section('content')
-    <h4>Dashboard</h4>
+    <div class="content" style="height: 70vh">
+        <h4>Dashboard</h4>
+    </div>
 @endsection
 
 @push('js')

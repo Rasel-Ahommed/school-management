@@ -1,0 +1,98 @@
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #eff0f5;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    margin-bottom: 10px;
+    border-left: 5px solid;
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast .icon {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast .toaster-content {
+    flex: 1;
+}
+
+.toast .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.toast .message {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.toast .close-btn {
+    font-size: 18px;
+    color: #aaa;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.toast .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    animation-timing-function: linear;
+}
+
+.toast:hover .progress-bar {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+/* Dynamic border colors */
+.toast.success {
+    border-left-color: #0d6efd;
+}
+
+.toast.error {
+    border-left-color: #dc3545;
+}
+
+.toast.warning {
+    border-left-color: #ffc107;
+}
+
+.toast.info {
+    border-left-color: #17a2b8;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
