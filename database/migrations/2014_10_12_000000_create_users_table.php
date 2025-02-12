@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -17,9 +18,19 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('type',['admin','teacher','stuff','accountant','student'])->default('student');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $data = [
+            'name'      => 'admin',
+            'email'     => 'admin@gmail.com',
+            'password'  => Hash::make('12345678'),
+            'type'      => 'admin',
+        ];
+
+        User::insert($data);
     }
 
     /**

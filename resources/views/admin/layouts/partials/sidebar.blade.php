@@ -14,6 +14,11 @@
                             <a href="{{route('course.index')}}">Classes</a>
                             <i class="fa fa-puzzle-piece"></i>
                         </li>
+
+                        <li class="active">
+                            <a href="{{route('section.index')}}">Sections</a>
+                            <i class="fa fa-puzzle-piece"></i>
+                        </li>
                         
                     </ul>
                 </li>

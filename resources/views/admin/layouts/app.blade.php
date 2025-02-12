@@ -30,6 +30,9 @@
     {{-- toster css --}}
     <link rel="stylesheet" href="{{url('assets/css/toaster.css')}}">
 
+    {{-- select 2 --}}
+    <link rel="stylesheet" href="{{url('assets/css/lib/chosen/chosen.min.css')}}">
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
         /* for tab padding */
@@ -95,7 +98,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-    <script src="{{ url('assets/js/init/fullcalendar-init.js') }} "></script>
+    <script src="{{ url('assets/js/init/fullcalendar-init.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- select 2 -->
+    <script src="{{url('assets/js/lib/chosen/chosen.jquery.min.js')}}"></script>
 
     <!-- toster js -->
     <script src="{{url('assets/js/toaster.js')}}"></script>
@@ -178,6 +185,17 @@
             </script>
         @endforeach
     @endif
+
+    <!-- select 2 -->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
 
 
     @stack('js')

@@ -55,9 +55,13 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($slug)
     {
-        //
+        $course = Course::where('slug',$slug)->first();
+        if(!$course){
+            abort(404);
+        }
+        return view('admin.courses.edit',compact('course'));
     }
 
     /**
@@ -65,7 +69,18 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name'  => 'required|unique:courses,name,'.$id,
+        ]);
+
+        $course                 = Course::findOrFail($id);
+        $course->name           = $request->name;
+        $course->slug           = Str::slug($request->name);
+        $course->class_type     = $request->class_type;
+        $course->status         = 'active';
+        $course->save();
+
+        return redirect()->route('course.index')->with('success','Class updated successfully!');
     }
 
     /**
@@ -73,6 +88,8 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $course->delete();
+        return redirect()->back()->with('success','Class deleted successfully!');
     }
 }

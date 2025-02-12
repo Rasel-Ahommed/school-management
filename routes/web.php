@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,24 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 Route::middleware('auth')->prefix('admin')->group(function () {
+    // Courses
     Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('index');
         Route::post('/store', [CourseController::class, 'store'])->name('store');
         Route::get('/edit/{slug}', [CourseController::class, 'edit'])->name('edit');
-        Route::post('/update/{slug}', [CourseController::class, 'update'])->name('update');
-        Route::delete('/delete/{slug}', [CourseController::class, 'destroy'])->name('destroy');
+        Route::post('/update/{id}', [CourseController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CourseController::class, 'destroy'])->name('destroy');
+    });
+
+    //section
+    Route::prefix('section')->name('section.')->group(function () {
+        Route::get('/', [SectionController::class, 'index'])->name('index');
+        Route::post('/store', [SectionController::class, 'store'])->name('store');
+        Route::get('/edit/{slug}', [SectionController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [SectionController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [SectionController::class, 'destroy'])->name('destroy');
     });
 });
 
