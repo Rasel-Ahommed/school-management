@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,18 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/edit/{slug}', [SectionController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [SectionController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [SectionController::class, 'destroy'])->name('destroy');
+    });
+
+    //subject
+    Route::prefix('subject')->name('subject.')->group(function () {
+        Route::get('/', [SubjectController::class, 'index'])->name('index');
+        Route::post('/store', [SubjectController::class, 'store'])->name('store');
+        Route::get('/edit/{slug}', [SubjectController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [SubjectController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [SubjectController::class, 'destroy'])->name('destroy');
+
+        //ajax
+        Route::get('/get-sections', [SubjectController::class, 'getSections'])->name('get_sections');
     });
 });
 

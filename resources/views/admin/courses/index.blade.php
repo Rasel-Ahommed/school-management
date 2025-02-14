@@ -19,7 +19,7 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="#">Dashboard</a></li>
-                                <li class="active">Calssess</li>
+                                <li class="active">Classes</li>
                             </ol>
                         </div>
                     </div>
@@ -34,14 +34,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="pb-3">
-                            <h5 class="fw-bold">Manage Calssess</h5>
+                            <h5 class="fw-bold">Manage Classes</h5>
                         </div>
                         <div class="default-tab">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link nav-padding  active" id="nav-profile-tab" data-toggle="tab"
                                         href="#nav-profile" role="tab" aria-controls="nav-profile"
-                                        aria-selected="false">All Classess</a>
+                                        aria-selected="false">All Classes</a>
                                     <a class="nav-item nav-link nav-padding" id="nav-home-tab" data-toggle="tab"
                                         href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><span
                                             class="ti-plus"></span> Create Class</a>
@@ -101,7 +101,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <input type="text" id="name" name="name"
                                                         value="{{ old('name') }}" placeholder="Class Name"
-                                                        class="form-control @error('name') is-invalid @enderror" required>
+                                                        class="form-control form-control-sm @error('name') is-invalid @enderror" required>
                                                 </div>
                                             </div>
 

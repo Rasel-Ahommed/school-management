@@ -10,13 +10,17 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Accademics</a>
                     <ul class="sub-menu children dropdown-menu">                            
-                        <li class="active">
+                        <li class="">
                             <a href="{{route('course.index')}}">Classes</a>
                             <i class="fa fa-puzzle-piece"></i>
                         </li>
 
-                        <li class="active">
+                        <li class="">
                             <a href="{{route('section.index')}}">Sections</a>
+                            <i class="fa fa-puzzle-piece"></i>
+                        </li>
+                        <li class="">
+                            <a href="{{route('subject.index')}}">Subjects</a>
                             <i class="fa fa-puzzle-piece"></i>
                         </li>
                         

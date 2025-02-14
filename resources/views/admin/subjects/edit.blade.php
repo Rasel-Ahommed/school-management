@@ -48,7 +48,7 @@
                                     <div class="col-12 col-md-6">
                                         <input type="text" id="name" name="name"
                                             value="{{ $section?->name }}" placeholder="Section Name"
-                                            class="form-control form-control-sm @error('name') is-invalid @enderror" required>
+                                            class="form-control @error('name') is-invalid @enderror" required>
                                     </div>
                                 </div>
 

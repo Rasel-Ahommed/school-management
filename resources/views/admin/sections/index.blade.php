@@ -19,7 +19,7 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
-                                <li class="active">Calssess</li>
+                                <li class="active">Sections</li>
                             </ol>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <input type="text" id="name" name="name"
                                                         value="{{ old('name') }}" placeholder="Section Name"
-                                                        class="form-control @error('name') is-invalid @enderror" required>
+                                                        class="form-control form-control-sm @error('name') is-invalid @enderror" required>
                                                 </div>
                                             </div>
 

@@ -48,7 +48,7 @@
                                     <div class="col-12 col-md-6">
                                         <input type="text" id="name" name="name"
                                             value="{{$course?->name }}" placeholder="Class Name"
-                                            class="form-control @error('name') is-invalid @enderror" required>
+                                            class="form-control form-control-sm @error('name') is-invalid @enderror" required>
                                     </div>
                                 </div>
 
@@ -57,7 +57,7 @@
                                         <label for="class_type"class=" form-control-label">Class Type</label>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <select name="class_type" id="class_type" class="form-control">
+                                        <select name="class_type" id="class_type" class="form-control form-control-sm">
                                             <option value="" disabled selected>Select Class Type</option>
                                             <option
                                                 {{ $course?->class_type == 'Primary Education' ? 'selected' : '' }}
