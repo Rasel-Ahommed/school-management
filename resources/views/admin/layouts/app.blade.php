@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ url('assets/css/cdn_css/normalize.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/cdn_css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/fonts/font_awesome/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/fonts/font_awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/fonts/themify/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ url('assets/fonts/pixeden/pe-icon-7-stroke.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/fonts/flag_icon/flag-icon.min.css') }}">
@@ -29,11 +29,12 @@
     {{-- toster css --}}
     <link rel="stylesheet" href="{{ url('assets/css/toaster.css') }}">
 
-    {{-- select 2 --}}
-    <link rel="stylesheet" href="{{ url('assets/css/lib/chosen/chosen.min.css') }}">
-    
+    {{-- select 2 js --}}
+    <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 
-    <script src="{{ url('assets/js/jquery-3.7.1.min.js') }}"></script>
+    {{-- select 2 css --}}
+    <link rel="stylesheet" href="{{ url('assets/select2/select2.min.css') }}">
+    
     <style>
         /* for tab padding */
         .nav-padding {
@@ -73,15 +74,14 @@
         <!-- Only Content for Login Page -->
         @yield('content')
     @endguest
-
-
+{{-- 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
- 
+--}}
     <script src="{{ url('assets/js/cdn_js/popper.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('assets/js/cdn_js/jquery.matchHeight.min.js') }}"></script>
-    <script src="{{ url('assets/js/main.js') }}"></script>
+    {{-- <script src="{{ url('assets/js/cdn_js/jquery.matchHeight.min.js') }}"></script> --}}
+    {{-- <script src="{{ url('assets/js/main.js') }}"></script> --}}
 
     <!--  Chart js -->
     <script src="{{ url('assets/js/cdn_js/Chart.bundle.min.js') }}"></script>
@@ -90,9 +90,9 @@
     <script src="{{ url('assets/js/cdn_js/chartist.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/chartist-plugin-legend.min.js') }}"></script>
 
-    <script src="{{ url('assets/js/cdn_js/jquery.flot.min.js') }}"></script>
+    {{-- <script src="{{ url('assets/js/cdn_js/jquery.flot.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/jquery.flot.pie.min.js') }}"></script>
-    <script src="{{ url('assets/js/cdn_js/jquery.flot.spline.min.js') }}"></script>
+    <script src="{{ url('assets/js/cdn_js/jquery.flot.spline.min.js') }}"></script> --}}
 
 
     <script src="{{ url('assets/js/cdn_js/moment.min.js') }}"></script>
@@ -100,12 +100,16 @@
     <script src="{{ url('assets/js/init/fullcalendar-init.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/sweetalert2@11.js') }}"></script>
 
-    <!-- select 2 -->
-    <script src="{{ url('assets/js/lib/chosen/chosen.jquery.min.js') }}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    {{-- select 2 js --}}
+    <script src="{{ url('assets/select2/select2.min.js') }}"></script>
   
     <!-- toster js -->
-    <script src="{{ url('assets/js/toaster.js') }}"></script>
+    <script src="{{ url('assets/js/toaster.js') }}"></script>    
+    <script>
+        $(document).ready(function() {
+            console.log("jQuery is working!");
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $(
@@ -196,12 +200,6 @@
             });
         });
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('.standardSelect').select2();
-        });
-    </script> --}}
-
 
     @stack('js')
 </body>
