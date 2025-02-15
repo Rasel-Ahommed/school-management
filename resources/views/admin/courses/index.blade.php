@@ -110,7 +110,7 @@
                                                     <label for="class_type"class=" form-control-label">Class Type</label>
                                                 </div>
                                                 <div class="col-12 col-md-6">
-                                                    <select name="class_type" id="class_type" class="form-control">
+                                                    <select name="class_type" class="form-control" id="class_type">
                                                         <option value="" disabled selected>Select Class Type</option>
                                                         <option
                                                             {{ old('class_type') ==  'Primary Education' ? 'selected' : ''}}
@@ -153,5 +153,10 @@
 @endsection
 
 @push('js')
+
+<script>
+    // #class_type add select2  
+    $("#class_type").select2();    
+</script>
     
 @endpush
