@@ -155,7 +155,6 @@
 @push('js')
 
 <script>
-    // #class_type add select2  
     $("#class_type").select2();    
 </script>
     

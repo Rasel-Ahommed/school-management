@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    {{-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> --}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CHTS Admin - @yield('title')</title>
-    {{-- <meta name="description" content="CHTS Admin - HTML5 Admin Template"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -26,14 +25,16 @@
     <link rel="stylesheet" href="{{ url('assets/css/cdn_css/weather-icons.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/cdn_css/fullcalendar.min.css') }}">
     
-    {{-- toster css --}}
+    <!-- toster css -->
     <link rel="stylesheet" href="{{ url('assets/css/toaster.css') }}">
 
-    {{-- select 2 js --}}
+    <!-- select 2 js -->
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
 
-    {{-- select 2 css --}}
+    <!-- select 2 css -->
     <link rel="stylesheet" href="{{ url('assets/select2/select2.min.css') }}">
+
+  
     
     <style>
         /* for tab padding */
@@ -48,7 +49,7 @@
             margin-left: 3px;
         }
     </style>
-    @yield('css')
+    @stack('css')
 </head>
 
 <body class="@if (!Auth::check()) bg-dark @endif">
@@ -74,15 +75,10 @@
         <!-- Only Content for Login Page -->
         @yield('content')
     @endguest
-{{-- 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
---}}
+
     <script src="{{ url('assets/js/cdn_js/popper.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/bootstrap.min.js') }}"></script>
-    {{-- <script src="{{ url('assets/js/cdn_js/jquery.matchHeight.min.js') }}"></script> --}}
-    {{-- <script src="{{ url('assets/js/main.js') }}"></script> --}}
-
+    
     <!--  Chart js -->
     <script src="{{ url('assets/js/cdn_js/Chart.bundle.min.js') }}"></script>
 
@@ -90,26 +86,19 @@
     <script src="{{ url('assets/js/cdn_js/chartist.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/chartist-plugin-legend.min.js') }}"></script>
 
-    {{-- <script src="{{ url('assets/js/cdn_js/jquery.flot.min.js') }}"></script>
-    <script src="{{ url('assets/js/cdn_js/jquery.flot.pie.min.js') }}"></script>
-    <script src="{{ url('assets/js/cdn_js/jquery.flot.spline.min.js') }}"></script> --}}
-
-
     <script src="{{ url('assets/js/cdn_js/moment.min.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/fullcalendar.min.js') }}"></script>
     <script src="{{ url('assets/js/init/fullcalendar-init.js') }}"></script>
     <script src="{{ url('assets/js/cdn_js/sweetalert2@11.js') }}"></script>
 
-    {{-- select 2 js --}}
+    <!-- select 2 js -->
     <script src="{{ url('assets/select2/select2.min.js') }}"></script>
   
     <!-- toster js -->
-    <script src="{{ url('assets/js/toaster.js') }}"></script>    
-    <script>
-        $(document).ready(function() {
-            console.log("jQuery is working!");
-        });
-    </script>
+    <script src="{{ url('assets/js/toaster.js') }}"></script>  
+    
+   
+
     <script>
         $(document).ready(function() {
             $(

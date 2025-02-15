@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
@@ -55,6 +56,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
         //ajax
         Route::get('/get-sections', [SubjectController::class, 'getSections'])->name('get_sections');
+    });
+
+    /* ************** student management routes *************** */
+    //admission
+    Route::prefix('admission')->name('admission.')->group(function () {
+        Route::get('/', [AdmissionController::class, 'index'])->name('index');
+        Route::post('/store', [AdmissionController::class, 'store'])->name('store');
     });
 });
 

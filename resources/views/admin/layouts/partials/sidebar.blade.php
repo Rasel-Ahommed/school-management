@@ -26,6 +26,28 @@
                         
                     </ul>
                 </li>
+
+                <!-- student management -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Manage Students</a>
+                    <ul class="sub-menu children dropdown-menu">                            
+                        <li class="">
+                            <a href="{{route('admission.index')}}">Admission</a>
+                            <i class="fa fa-puzzle-piece"></i>
+                        </li>
+
+                        <li class="">
+                            <a href="{{route('section.index')}}">Sections</a>
+                            <i class="fa fa-puzzle-piece"></i>
+                        </li>
+                        <li class="">
+                            <a href="{{route('subject.index')}}">Subjects</a>
+                            <i class="fa fa-puzzle-piece"></i>
+                        </li>
+                        
+                    </ul>
+                </li>
+
                 {{-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                     <ul class="sub-menu children dropdown-menu">
