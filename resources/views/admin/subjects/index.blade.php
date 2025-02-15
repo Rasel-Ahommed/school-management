@@ -69,10 +69,11 @@
                                                         <td>{{ $subject?->name }}</td>
                                                         <td>{{ $subject?->short_name }}</td>
                                                         <td>{{ $subject?->course?->name }}</td>
+                                                        <td>{{ $subject?->section?->name }}</td>
                                                         <td>{{ $subject?->teacher?->name }}</td>
                                                         <td class="d-flex justify-content-center align-items-center"
                                                             style="gap: 10px">
-                                                            <a href="{{ route('subject.edit', $subject?->slug) }}"
+                                                            <a href="{{ route('subject.edit', $subject?->id) }}"
                                                                 class="btn btn-outline-primary btn-sm">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>
@@ -123,9 +124,9 @@
                                                                 Name</label>
                                                         </div>
                                                         <div class="col-12 col-md-8">
-                                                            <input type="text" id="name" name="name"
-                                                                value="{{ old('name') }}" placeholder="Section Name"
-                                                                class="form-control form-control-sm @error('name') is-invalid @enderror"
+                                                            <input type="text" id="short_name" name="short_name"
+                                                                value="{{ old('short_name') }}" placeholder="Section Name"
+                                                                class="form-control form-control-sm @error('short_name') is-invalid @enderror"
                                                                 required>
                                                         </div>
                                                     </div>
@@ -135,10 +136,9 @@
                                                             <label for="course_id"class=" form-control-label">Class</label>
                                                         </div>
                                                         <div class="col-12 col-md-8">
-                                                            <select data-placeholder="Choose a Class..." id="course"
-                                                                name="course_id" class="standardSelect course"
-                                                                tabindex="1" required>
-                                                                <option value="" label="default"></option>
+                                                            <select id="course" name="course_id"
+                                                                class="form-control form-control-sm  course" tabindex="1" required>
+                                                                <option value="">Select Class</option>
                                                                 @foreach ($courses as $course)
                                                                     <option
                                                                         {{ old('course_id') == $course?->id ? 'selected' : '' }}
@@ -157,9 +157,11 @@
                                                                 for="course_id"class=" form-control-label">Section</label>
                                                         </div>
                                                         <div class="col-12 col-md-8">
-                                                            <select id="section" name="section_id" class="standardSelect" required>
+                                                            <select name="section_id" id="section"
+                                                                class="form-control form-control-sm ">
+                                                                <option value="">Select Section</option>
                                                             </select>
-                                                            
+
                                                         </div>
                                                     </div>
 
@@ -169,9 +171,9 @@
                                                                 for="teacher_id"class=" form-control-label">Teacher</label>
                                                         </div>
                                                         <div class="col-12 col-md-8">
-                                                            <select data-placeholder="Choose a Teacher..."
-                                                                name="teacher_id" class="standardSelect" tabindex="1">
-                                                                <option value="" label="default"></option>
+                                                            <select name="teacher_id" class="form-control-sm form-control"
+                                                                tabindex="1">
+                                                                <option value="">Select Teacher</option>
                                                                 @foreach ($teachers as $teacher)
                                                                     <option
                                                                         {{ old('teacher_id') == $teacher?->id ? 'selected' : '' }}
@@ -202,5 +204,27 @@
 @endsection
 
 @push('js')
- 
+    <script>
+        $('#course').on('change', function() {
+            var course_id = $(this).val();
+            $.ajax({
+                url: "{{ route('subject.get_sections') }}",
+                method: "GET",
+                data: {
+                    course_id: course_id
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('#section').html('<option value="">Select Section</option>');
+                    $.each(response, function(index, section) {
+                        $('#section').append('<option value="' + section.id + '">' + section.name +
+                            '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", xhr.responseText);
+                }
+            });
+        });
+    </script>
 @endpush

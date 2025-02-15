@@ -35,7 +35,28 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'              => 'required',
+            'short_name'        => 'required',
+            'course_id'         => 'required',
+            'section_id'        => 'required',
+            'teacher_id'        => 'nullable|exists:users,id',
+        ]);
+
+        try{
+            $subject = new Subject();
+            $subject->name          = $request->name;
+            $subject->short_name    = $request->short_name;
+            $subject->course_id     = $request->course_id;
+            $subject->section_id    = $request->section_id;
+            $subject->teacher_id    = $request->teacher_id;
+            $subject->status        = 'active';
+            $subject->save();
+
+            return redirect()->back()->with('success','Subject created successfully');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error','Something went wrong');
+        }
     }
 
     /**
@@ -51,7 +72,12 @@ class SubjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $subject        = Subject::findOrFail($id);
+        $courses        = Course::where('status','active')->get();
+        $teachers       = User::where('type','teacher')->get();
+        $sections       = Section::where('course_id',$subject->course_id)->where('status','active')->get();
+
+        return view('admin.subjects.edit',compact('courses','teachers','subject','sections'));
     }
 
     /**
@@ -59,7 +85,27 @@ class SubjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name'              => 'required',
+            'short_name'        => 'required',
+            'course_id'         => 'required',
+            'section_id'        => 'required',
+            'teacher_id'        => 'required',
+        ]);
+        try{
+            $subject = Subject::findOrFail($id);
+            $subject->name          = $request->name;
+            $subject->short_name    = $request->short_name;
+            $subject->course_id     = $request->course_id;
+            $subject->section_id    = $request->section_id;
+            $subject->teacher_id    = $request->teacher_id;
+            $subject->status        = 'active';
+            $subject->save();
+
+            return redirect()->route('subject.index')->with('success','Subject updated successfully');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error','Something went wrong');
+        }
     }
 
     /**
@@ -67,12 +113,14 @@ class SubjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $subject = Subject::findOrFail($id);
+        $subject->delete();
+        return redirect()->back()->with('success','Subject deleted successfully!');
     }
 
     //get section 
     public function getSections(Request $request){
-        $sections = Section::where('course_id',$request->courseId)->where('status','active')->get();
+        $sections = Section::where('course_id',$request->course_id)->where('status','active')->get();
         return response()->json($sections);
     }
 }

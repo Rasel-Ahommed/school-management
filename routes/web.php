@@ -49,7 +49,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::prefix('subject')->name('subject.')->group(function () {
         Route::get('/', [SubjectController::class, 'index'])->name('index');
         Route::post('/store', [SubjectController::class, 'store'])->name('store');
-        Route::get('/edit/{slug}', [SubjectController::class, 'edit'])->name('edit');
+        Route::get('/edit/{id}', [SubjectController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [SubjectController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [SubjectController::class, 'destroy'])->name('destroy');
 
